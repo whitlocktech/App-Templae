@@ -9,7 +9,6 @@
   },
   "keywords": [
     "oauth2",
-    "oidc",
     "mongoose",
     "mongodb",
     "express",
