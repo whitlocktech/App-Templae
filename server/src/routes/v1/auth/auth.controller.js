@@ -12,20 +12,20 @@ async function register(req, res, next) {
   }
 }
 
-async function login(req, res, next) { 
-    passport.authenticate('local', { session: false }, (err, user, info) => { 
+async function login(req, res, next) {
+  passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err || !user) {
-      return res.status(400).json({ message: info.message })
+      return res.status(400).json({ message: info && info.message ? info.message : 'Invalid credentials' });
     }
     try {
-      const token = generateToken(user)
-
-      return res.json({ token })
-    } catch (error) { 
-      return res.status(500).json({ message: 'Internal Server Error' })
+      const token = generateToken(user);
+      return res.json({ token });
+    } catch (error) {
+      return res.status(500).json({ message: 'Internal Server Error' });
     }
-  })(req, res, next)
+  })(req, res, next);
 }
+
 
 async function logout(req, res, next) { 
   try {
