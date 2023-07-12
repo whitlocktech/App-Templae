@@ -36,9 +36,12 @@ To get started, follow the steps below:
      MONGO_DB_URL=mongodb://localhost:27017/database
      SESSION_SECRET=your_session_secret
      JWT_SECRET=your_jwt_secret
+     NODE_ENV=development
      ```
 
      Replace `your_session_secret` and `your_jwt_secret` with your preferred session and JWT secrets, respectively. Modify the `MONGO_DB_URL` as per your MongoDB configuration.
+
+     Set `NODE_ENV` to `production` if you want to disable console logging in the logging middleware.
 
 4. Start the server:
 
@@ -111,6 +114,8 @@ The application uses local strategy authentication with Passport.js. It supports
 ## Logging
 
 The application utilizes logging middleware to log requests to files. The log files are stored in the `logs` directory.
+
+In development mode (`NODE_ENV=development`), request logs are also printed to the console. In production mode (`NODE_ENV=production`), console logging is disabled to improve performance.
 
 ## Contributing
 
